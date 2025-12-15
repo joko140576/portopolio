@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio - Joko Prabowo</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* Warna default (mode gelap) */
+            --primary-color: #1a1a2e;
+            --secondary-color: #16213e;
+            --accent-color: #0fce7c;
+            --accent-dark: #0aa864;
+            --text-color: #e6e6e6;
+            --highlight-color: #00d4ff;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(15, 206, 124, 0.2);
+            --navbar-bg: rgba(22, 33, 62, 0.9);
+            --footer-bg: #16213e;
+            --badge-bg: rgba(15, 206, 124, 0.2);
+            --badge-border: rgba(15, 206, 124, 0.5);
+            --project-badge-bg: rgba(0, 212, 255, 0.1);
+            --project-badge-border: rgba(0, 212, 255, 0.3);
+        }
+        
+        /* Mode cerah */
+        .light-mode {
+            --primary-color: #f8f9fa;
+            --secondary-color: #e9ecef;
+            --accent-color: #0d6efd;
+            --accent-dark: #0b5ed7;
+            --text-color: #212529;
+            --highlight-color: #0dcaf0;
+            --card-bg: rgba(255, 255, 255, 0.9);
+            --card-border: rgba(13, 110, 253, 0.2);
+            --navbar-bg: rgba(248, 249, 250, 0.95);
+            --footer-bg: #e9ecef;
+            --badge-bg: rgba(13, 110, 253, 0.1);
+            --badge-border: rgba(13, 110, 253, 0.3);
+            --project-badge-bg: rgba(13, 202, 240, 0.1);
+            --project-badge-border: rgba(13, 202, 240, 0.3);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+        
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        .futuristic-bg {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: background 0.5s ease;
+        }
+        
+        .futuristic-bg::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(15, 206, 124, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(0, 212, 255, 0.1) 0%, transparent 20%);
+            z-index: 0;
+        }
+        
+        .light-mode .futuristic-bg::before {
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(13, 110, 253, 0.1) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(13, 202, 240, 0.1) 0%, transparent 20%);
+        }
+        
+        .section-container {
+            position: relative;
+            z-index: 1;
+            padding: 60px 0;
+        }
+        
+        .section-title {
+            color: var(--accent-color);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 10px;
+            transition: color 0.5s ease;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+            border-radius: 3px;
+            transition: background 0.5s ease;
+        }
+        
+        .card-futuristic {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .light-mode .card-futuristic {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        }
+        
+        .card-futuristic:hover {
+            transform: translateY(-10px);
+            border-color: var(--accent-color);
+            box-shadow: 0 15px 35px rgba(15, 206, 124, 0.2);
+        }
+        
+        .light-mode .card-futuristic:hover {
+            box-shadow: 0 15px 35px rgba(13, 110, 253, 0.15);
+        }
+        
+        .card-header-futuristic {
+            background: rgba(15, 206, 124, 0.1);
+            border-bottom: 1px solid rgba(15, 206, 124, 0.3);
+            padding: 20px;
+            transition: background 0.5s ease, border-color 0.5s ease;
+        }
+        
+        .light-mode .card-header-futuristic {
+            background: rgba(13, 110, 253, 0.1);
+            border-bottom: 1px solid rgba(13, 110, 253, 0.3);
+        }
+        
+        .card-body-futuristic {
+            padding: 25px;
+        }
+        
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--accent-color), var(--highlight-color));
+            border-radius: 3px;
+            transition: background 0.5s ease;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -34px;
+            top: 5px;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: var(--accent-color);
+            box-shadow: 0 0 0 5px rgba(15, 206, 124, 0.2);
+            transition: background-color 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .light-mode .timeline-item::before {
+            box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.2);
+        }
+        
+        .timeline-date {
+            color: var(--highlight-color);
+            font-weight: 500;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            transition: color 0.5s ease;
+        }
+        
+        .timeline-title {
+            color: var(--accent-color);
+            font-weight: 700;
+            margin-bottom: 10px;
+            transition: color 0.5s ease;
+        }
+        
+        .skill-slider {
+            margin-bottom: 25px;
+        }
+        
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+        
+        .skill-value {
+            color: var(--highlight-color);
+            font-weight: 500;
+            transition: color 0.5s ease;
+        }
+        
+        .skill-slider input[type="range"] {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            outline: none;
+            transition: background 0.5s ease;
+        }
+        
+        .light-mode .skill-slider input[type="range"] {
+            background: rgba(0, 0, 0, 0.1);
+        }
+        
+        .skill-slider input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(15, 206, 124, 0.8);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .light-mode .skill-slider input[type="range"]::-webkit-slider-thumb {
+            box-shadow: 0 0 10px rgba(13, 110, 253, 0.8);
+        }
+        
+        .skill-slider input[type="range"]::-moz-range-thumb {
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 0 10px rgba(15, 206, 124, 0.8);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .light-mode .skill-slider input[type="range"]::-moz-range-thumb {
+            box-shadow: 0 0 10px rgba(13, 110, 253, 0.8);
+        }
+        
+        .progress-bar-futuristic {
+            height: 10px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(15, 206, 124, 0.5);
+            transition: background 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .light-mode .progress-bar-futuristic {
+            box-shadow: 0 0 10px rgba(13, 110, 253, 0.5);
+        }
+        
+        .contact-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .contact-info i {
+            color: var(--accent-color);
+            width: 40px;
+            font-size: 1.3rem;
+            transition: color 0.5s ease;
+        }
+        
+        .badge-futuristic {
+            background-color: var(--badge-bg);
+            color: var(--accent-color);
+            border: 1px solid var(--badge-border);
+            border-radius: 20px;
+            padding: 8px 15px;
+            margin: 5px;
+            display: inline-block;
+            font-size: 0.9rem;
+            transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+        }
+        
+        .profile-header {
+            text-align: center;
+            padding: 80px 0 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .profile-image {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--accent-color);
+            margin: 0 auto 30px;
+            background-color: rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+            box-shadow: 0 0 30px rgba(15, 206, 124, 0.5);
+            transition: border-color 0.5s ease, box-shadow 0.5s ease, background-color 0.5s ease;
+        }
+        
+        .light-mode .profile-image {
+            background-color: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 0 30px rgba(13, 110, 253, 0.3);
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .profile-title {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            background: linear-gradient(90deg, var(--accent-color), var(--highlight-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 5px 15px rgba(15, 206, 124, 0.3);
+            transition: background 0.5s ease, text-shadow 0.5s ease;
+        }
+        
+        .light-mode .profile-title {
+            text-shadow: 0 5px 15px rgba(13, 110, 253, 0.2);
+        }
+        
+        .profile-subtitle {
+            font-size: 1.5rem;
+            color: var(--text-color);
+            margin-bottom: 20px;
+            transition: color 0.5s ease;
+        }
+        
+        .profile-summary {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.2rem;
+            color: #b0b0b0;
+            transition: color 0.5s ease;
+        }
+        
+        .light-mode .profile-summary {
+            color: #6c757d;
+        }
+        
+        .navbar-futuristic {
+            background-color: var(--navbar-bg);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--card-border);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+        
+        .nav-link-futuristic {
+            color: var(--text-color) !important;
+            margin: 0 10px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link-futuristic:hover, .nav-link-futuristic.active {
+            color: var(--accent-color) !important;
+        }
+        
+        .nav-link-futuristic::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link-futuristic:hover::after, .nav-link-futuristic.active::after {
+            width: 100%;
+        }
+        
+        .footer-futuristic {
+            background-color: var(--footer-bg);
+            padding: 40px 0;
+            border-top: 1px solid var(--card-border);
+            text-align: center;
+            transition: background-color 0.5s ease, border-color 0.5s ease;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: rgba(15, 206, 124, 0.1);
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .light-mode .social-icon {
+            background-color: rgba(13, 110, 253, 0.1);
+        }
+        
+        .social-icon:hover {
+            background-color: var(--accent-color);
+            color: var(--primary-color);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(15, 206, 124, 0.3);
+        }
+        
+        .light-mode .social-icon:hover {
+            box-shadow: 0 10px 20px rgba(13, 110, 253, 0.2);
+        }
+        
+        .project-badge {
+            display: inline-block;
+            background-color: var(--project-badge-bg);
+            color: var(--highlight-color);
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+            border: 1px solid var(--project-badge-border);
+            transition: background-color 0.5s ease, border-color 0.5s ease, color 0.5s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .profile-title {
+                font-size: 2.5rem;
+            }
+            
+            .profile-subtitle {
+                font-size: 1.2rem;
+            }
+            
+            .section-container {
+                padding: 40px 0;
+            }
+        }
+        
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 0;
+        }
+        
+        .floating-element {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(15, 206, 124, 0.1) 0%, transparent 70%);
+            transition: background 0.5s ease;
+        }
+        
+        .light-mode .floating-element {
+            background: radial-gradient(circle, rgba(13, 110, 253, 0.1) 0%, transparent 70%);
+        }
+        
+        .floating-element:nth-child(1) {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            left: 5%;
+            animation: float 25s infinite linear;
+        }
+        
+        .floating-element:nth-child(2) {
+            width: 200px;
+            height: 200px;
+            top: 60%;
+            right: 10%;
+            animation: float 20s infinite linear reverse;
+        }
+        
+        .floating-element:nth-child(3) {
+            width: 150px;
+            height: 150px;
+            bottom: 20%;
+            left: 15%;
+            animation: float 15s infinite linear;
+        }
+        
+        @keyframes float {
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+            25% {
+                transform: translate(30px, 30px) rotate(90deg);
+            }
+            50% {
+                transform: translate(0, 60px) rotate(180deg);
+            }
+            75% {
+                transform: translate(-30px, 30px) rotate(270deg);
+            }
+            100% {
+                transform: translate(0, 0) rotate(360deg);
+            }
+        }
+        
+        /* Toggle switch untuk mode cerah/gelap */
+        .theme-toggle {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1001;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 50px;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .theme-toggle:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+        
+        .theme-toggle i {
+            font-size: 1.2rem;
+            color: var(--accent-color);
+            margin: 0 5px;
+            transition: color 0.5s ease;
+        }
+        
+        .theme-text {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin: 0 5px;
+            transition: color 0.5s ease;
+        }
+        
+        .theme-toggle .fa-sun {
+            display: none;
+        }
+        
+        .light-mode .theme-toggle .fa-sun {
+            display: inline-block;
+        }
+        
+        .light-mode .theme-toggle .fa-moon {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Toggle untuk mode cerah/gelap -->
+    <div class="theme-toggle" id="themeToggle">
+        <i class="fas fa-sun"></i>
+        <i class="fas fa-moon"></i>
+        <span class="theme-text" id="themeText">Mode Gelap</span>
+    </div>
+    
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+        <div class="floating-element"></div>
+    </div>
+    
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-futuristic">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="color: var(--accent-color); font-family: 'Orbitron', sans-serif; font-weight: 900; font-size: 1.8rem;">
+                <i class="fas fa-code me-2"></i>PORTOFOLIO
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon" style="filter: invert(1);"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-futuristic active" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-futuristic" href="#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-futuristic" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-futuristic" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link nav-link-futuristic" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile Header -->
+    <section id="home" class="futuristic-bg">
+        <div class="profile-header">
+            <div class="container">
+                <div class="profile-image">
+                    <img src="jp.png" alt="Joko Prabowo" class="img-fluid rounded-circle">
+                </div>
+                <h1 class="profile-title">JOKO PRABOWO</h1>
+                <h2 class="profile-subtitle">Unit Development & Training</h2>
+                <p class="profile-summary">
+                    Saya telah bekerja di PT SSI dari tahun 1999 – 2024 (25 tahun), pernah sebagai Teknisi Workshop, Teknisi ATM, Sekarang sebagai Manager Unit Training & Development di Divisi HCC PT Swadharma Sarana Informatika.
+                </p>
+                <div class="mt-4">
+                    <span class="badge-futuristic">25+ Years Experience</span>
+                    <span class="badge-futuristic">ATM Specialist</span>
+                    <span class="badge-futuristic">Training Manager</span>
+                    <span class="badge-futuristic">Tech Innovator</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section-container futuristic-bg">
+        <div class="container">
+            <h2 class="section-title">WORK EXPERIENCE</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-briefcase me-2"></i>PT Swadharma Sarana Informatika (1999-2024)</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Des 1999 – Juli 2000</div>
+                                    <div class="timeline-title">Teknisi Workshop</div>
+                                    <p>Sebagai Teknisi Workshop di SSI Jakarta. Kemampuan: Service & Maintenance Passbok printer IBM 4722 9068, Service Telex Bank BNI, Service PC Computer Compaq & IBM.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Juli 2000 - 2003</div>
+                                    <div class="timeline-title">Teknisi Mesin ATM</div>
+                                    <p>Sebagai Teknisi ATM di Wilayah 12 BNI yang meliputi area: Jakarta Kota, Bogor, Karawang, Cikampek, Purwakarta, Cilegon, Serang, Rangkas Bitung, Merak dan Pontianak.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2003 - 2006</div>
+                                    <div class="timeline-title">Koordinator ATM Pontianak</div>
+                                    <p>Sebagai Koordinator SLM ATM di Kota Pontianak dan sekitarnya meliputi area: Pontianak, Singkawang, Pemangkat, Bengkayang, Sintang, Sanggau, Ketapang.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2006 - 2009</div>
+                                    <div class="timeline-title">Koordinator ATM Bekasi</div>
+                                    <p>Sebagai Koordinator SLM ATM di Kota Bekasi dan sekitarnya meliputi area: Bekasi, Cikarang, Cibitung, Cikampek, Karawang, Purwakarta, dan Subang.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2009 - 2013</div>
+                                    <div class="timeline-title">Koordinator ATM Jakarta 3</div>
+                                    <p>Sebagai Koordinator SLM ATM di wilayah: WJK, WJY dan WJS.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">2013 - 2024</div>
+                                    <div class="timeline-title">Manager Unit Pelatihan</div>
+                                    <p>Sebagai manager unit pelatihan dibawah Direksi Utama, sekarang dibawah SDM atau HCC.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-history me-2"></i>Previous Work Experience</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="timeline">
+                                <div class="timeline-item">
+                                    <div class="timeline-date">1998</div>
+                                    <div class="timeline-title">Teknik Elektro Diploma</div>
+                                    <p>Menyelesaikan pendidikan Teknik Elektro pada tahun 1998.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Jan 1998</div>
+                                    <div class="timeline-title">Nurul Fikri - Unit Komputer & Jaringan</div>
+                                    <p>Pernah bekerja di Nurul Fikri bagian Unit Komputer & jaringan.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Juli 1998</div>
+                                    <div class="timeline-title">PT Perikom Nusantara - Teknisi Komputer</div>
+                                    <p>Bekerja sebagai teknisi computer di PT Perikom Nusantara.</p>
+                                </div>
+                                
+                                <div class="timeline-item">
+                                    <div class="timeline-date">Jan 1999</div>
+                                    <div class="timeline-title">PT Metroprint - Teknisi Komputer & Printer</div>
+                                    <p>Bekerja di PT Metroprint sebagai Teknisi Komputer & Printer.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-futuristic mt-4">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-award me-2"></i>Recognition & Awards</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-trophy text-warning me-3 fs-4"></i>
+                                <div>
+                                    <h5 class="mb-1">Masa Bakti 20 Tahun</h5>
+                                    <p class="mb-0">Dihargai atas pengabdian selama 20 tahun di PT SSI (2019)</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-3">
+                                <i class="fas fa-medal text-info me-3 fs-4"></i>
+                                <div>
+                                    <h5 class="mb-1">Sentra Terbaik 2012</h5>
+                                    <p class="mb-0">Bersama team work Harmoni, mendapatkan juara 1</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-book text-success me-3 fs-4"></i>
+                                <div>
+                                    <h5 class="mb-1">Pembuatan Buku Manual ATM</h5>
+                                    <p class="mb-0">Membuat buku manual: NCR, Diebold, Wincor dan Hyosung. Dihargai oleh Direksi seharga @ Rp. 2.000.000,- per buku</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section-container futuristic-bg">
+        <div class="container">
+            <h2 class="section-title">PROFESSIONAL SKILLS</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-cogs me-2"></i>Technical Skills</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Service & Maintenance ATM</span>
+                                    <span class="skill-value" id="atm-value">85%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="85" class="slider" id="atm-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Programming (HTML, CSS, JS, Python)</span>
+                                    <span class="skill-value" id="programming-value">75%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="75" class="slider" id="programming-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 75%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Android App Development</span>
+                                    <span class="skill-value" id="android-value">70%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="70" class="slider" id="android-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 70%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Microsoft Office & Platforms</span>
+                                    <span class="skill-value" id="office-value">90%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="90" class="slider" id="office-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 90%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-tools me-2"></i>ATM Specialist Skills</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>ATM DEC RS dan R6</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>ATM IBM 4783</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>ATM NCR P70, P77, SS</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>ATM Wincor Series</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>ATM Diebold 510 & 522</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>ATM Hyosung</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>CDM & CRM (Omron, Hitachi)</span>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                    <div class="d-flex align-items-center">
+                                        <i class="fas fa-check-circle text-success me-2"></i>
+                                        <span>CDM & CRM (Oki, Hyosung, Wincor)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card-futuristic mt-4">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-rocket me-2"></i>Emerging Technologies</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Artificial Intelligence</span>
+                                    <span class="skill-value" id="ai-value">60%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="60" class="slider" id="ai-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 60%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Robotic Arduino</span>
+                                    <span class="skill-value" id="robotic-value">65%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="65" class="slider" id="robotic-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 65%"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="skill-slider">
+                                <div class="skill-name">
+                                    <span>Google Platform</span>
+                                    <span class="skill-value" id="google-value">80%</span>
+                                </div>
+                                <input type="range" min="0" max="100" value="80" class="slider" id="google-slider">
+                                <div class="progress mt-2">
+                                    <div class="progress-bar progress-bar-futuristic" role="progressbar" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section-container futuristic-bg">
+        <div class="container">
+            <h2 class="section-title">PROJECTS & ASSIGNMENTS</h2>
+            
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <div class="card-header-futuristic">
+                            <h5><i class="fas fa-users me-2"></i>Reconciling The Demonstration</h5>
+                            <span class="project-badge">2003</span>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <p>Bertugas ke Semarang selama 1 bulan untuk meredakan demonstrasi pegawai di PT SSI saat itu.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <div class="card-header-futuristic">
+                            <h5><i class="fas fa-map-marker-alt me-2"></i>Service Point Pontianak</h5>
+                            <span class="project-badge">2003</span>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <p>Membuka Service point Pontianak Kal-Bar untuk efisiensi dan efektivitas penanganan mesin ATM Wilayah 12 saat itu.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <div class="card-header-futuristic">
+                            <h5><i class="fas fa-money-check-alt me-2"></i>Deployment ATM BNI</h5>
+                            <span class="project-badge">2009-2013</span>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <p>Ikut dalam proses Deployment ATM BNI yaitu projek instalasi mesin ATM sesuai RBB dari tahun 2009 sampai 2013.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <div class="card-header-futuristic">
+                            <h5><i class="fas fa-video me-2"></i>Deployment CCTV ATM BNI</h5>
+                            <span class="project-badge">2011-2013</span>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <p>Ikut dalam proses Deployment CCTV ATM BNI yaitu projek instalasi CCTV (DVR + Doom + Text Inserter) dari tahun 2011 sampai 2013. Membantu Team Lapangan (SLM) dalam proyek text inserter CCTV di Unitek Serang, Samarinda, dan Pontianak</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <div class="card-header-futuristic">
+                            <h5><i class="fas fa-graduation-cap me-2"></i>Pelatihan Pembukaan Sentra Baru</h5>
+                            <span class="project-badge">2014</span>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <p>Setiap pembukaan Sentra Baru, diadakan pelatihan selama 5 hari di berbagai kota di Indonesia.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="card-futuristic h-100">
+                        <div class="card-header-futuristic">
+                            <h5><i class="fas fa-mobile-alt me-2"></i>Aplikasi Android & Web</h5>
+                            <span class="project-badge">2015+</span>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <p>Membuat berbagai aplikasi Android dan Web seperti Kamus SSI, AMORA, Pikacu, Absensi KOPSSI, SOP, Report DKM Masjid, E-learning, dan SKI.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-lightbulb me-2"></i>Inisiatif & Inovasi</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <h5>Inisiator Culture Perusahaan</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Pajero</strong> - Perjalanan Rohani</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Metal</strong> - Melek Digital</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Colege</strong> - Continuous Learning Go to Journey</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Maruto</strong> - Morning Run Together</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Pikacu</strong> - Perform Kinerja COU</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>ACI</strong> - Assessment Center Inklusif</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Wiro Sableng</strong> - Webinar Romadhon sambil belajar bareng</li>
+                                    </ul>
+                                </div>
+                                <div class="col-md-6">
+                                    <h5>Modul & Pembelajaran</h5>
+                                    <p>Module yang telah dibuat hampir 50 module dan 130 movie untuk keperluan pelatihan.</p>
+                                    <h5 class="mt-3">Membuat Mikro Program untuk HCC</h5>
+                                    <ul class="list-unstyled">
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Timecard</strong> - Program berbasis Web untuk menghitung Wola Workload Analisys</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Assessment</strong> - Program berbasis Web untuk assessment pegawai dari Low -> top manager</li>
+                                        <li><i class="fas fa-arrow-right me-2" style="color: var(--accent-color);"></i><strong>Portal Training</strong> - program berbasis Web untuk mempermudah pegawai mendapatkan materi materi pelatihan</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section-container futuristic-bg">
+        <div class="container">
+            <h2 class="section-title">CONTACT INFORMATION</h2>
+            
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-address-card me-2"></i>Contact Details</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="contact-info">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <strong>Address:</strong> Jl Beting No.25 Semper Barat, Cilincing DKI, Jakarta Utara 14130
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <i class="fas fa-phone"></i>
+                                <div>
+                                    <strong>Phone:</strong> (62) 0811 900 1542
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <i class="fas fa-envelope"></i>
+                                <div>
+                                    <strong>Email:</strong> prabowo.joko@ssilink.co.id
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <strong>Education:</strong> Teknik Elektro Diploma (1998)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="card-futuristic">
+                        <div class="card-header-futuristic">
+                            <h4><i class="fas fa-share-alt me-2"></i>Online Presence</h4>
+                        </div>
+                        <div class="card-body-futuristic">
+                            <div class="contact-info">
+                                <i class="fab fa-youtube"></i>
+                                <div>
+                                    <strong>YouTube Channel:</strong> Jokoprabowo-learning
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <i class="fab fa-github"></i>
+                                <div>
+                                    <strong>GitHub:</strong> github/joko
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <strong>Current Position:</strong> Manager Unit Training & Development, Divisi HCC PT Swadharma Sarana Informatika
+                                </div>
+                            </div>
+                            
+                            <div class="contact-info">
+                                <i class="fas fa-calendar-alt"></i>
+                                <div>
+                                    <strong>Experience:</strong> 25+ years at PT SSI (1999-2024)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer-futuristic">
+        <div class="container">
+            <h4>Joko Prabowo</h4>
+            <p>Unit Development & Training Specialist</p>   
+            <p class="mt-4 mb-0">&copy; 2024 Joko Prabowo Portofolio. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Fungsi untuk toggle mode cerah/gelap
+        const themeToggle = document.getElementById('themeToggle');
+        const themeText = document.getElementById('themeText');
+        const body = document.body;
+        
+        // Cek preferensi mode sebelumnya
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'light') {
+            body.classList.add('light-mode');
+            themeText.textContent = 'Mode Cerah';
+        }
+        
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('light-mode');
+            
+            if (body.classList.contains('light-mode')) {
+                themeText.textContent = 'Mode Cerah';
+                localStorage.setItem('theme', 'light');
+            } else {
+                themeText.textContent = 'Mode Gelap';
+                localStorage.setItem('theme', 'dark');
+            }
+        });
+        
+        // Range slider functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get all sliders
+            const sliders = document.querySelectorAll('.slider');
+            
+            // Update each slider's display
+            sliders.forEach(slider => {
+                const valueId = slider.id.replace('-slider', '-value');
+                const valueDisplay = document.getElementById(valueId);
+                const progressBar = slider.nextElementSibling.querySelector('.progress-bar');
+                
+                // Initial update
+                updateSliderValue(slider, valueDisplay, progressBar);
+                
+                // Update on slider change
+                slider.addEventListener('input', function() {
+                    updateSliderValue(this, valueDisplay, progressBar);
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Update active nav link
+                        document.querySelectorAll('.nav-link-futuristic').forEach(link => {
+                            link.classList.remove('active');
+                        });
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Update active nav link on scroll
+            window.addEventListener('scroll', function() {
+                const sections = document.querySelectorAll('section');
+                const navLinks = document.querySelectorAll('.nav-link-futuristic');
+                
+                let currentSection = '';
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop - 100;
+                    const sectionHeight = section.clientHeight;
+                    if(scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+                
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if(link.getAttribute('href') === `#${currentSection}`) {
+                        link.classList.add('active');
+                    }
+                });
+            });
+        });
+        
+        // Function to update slider value display
+        function updateSliderValue(slider, valueDisplay, progressBar) {
+            const value = slider.value;
+            valueDisplay.textContent = `${value}%`;
+            progressBar.style.width = `${value}%`;
+            
+            // Update progress bar color based on value
+            if(value < 50) {
+                progressBar.style.background = 'linear-gradient(90deg, #ff6b6b, #ff8e8e)';
+            } else if(value < 75) {
+                progressBar.style.background = 'linear-gradient(90deg, #ffa726, #ffcc80)';
+            } else {
+                progressBar.style.background = 'linear-gradient(90deg, var(--accent-color), var(--highlight-color))';
+            }
+        }
+    </script>
+</body>
+</html>
